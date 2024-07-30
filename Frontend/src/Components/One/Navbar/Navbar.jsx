@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css';
 
 const Navbar = () => {
+    const [isVisible, setIsVisible] = useState(true);
+
+    useEffect(() => {
+        let timeoutId;
+        const handleScroll = () => {
+            setIsVisible(false);
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => setIsVisible(true), 200);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            clearTimeout(timeoutId);
+        };
+    }, []);
+
+    const handleContactClick = (e) => {
+        e.preventDefault();
+        document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+    };
 
     return (
         <>
@@ -15,11 +36,10 @@ const Navbar = () => {
                 <div className="menu-item">
                     <ul>
                         <li>
-                            Home
+                        <Link to="/">Home</Link>
                         </li>
                         <li className='icon-nav'>
-
-                            <p>   Service</p>
+                            <Link to="/service">Service</Link>
                             <span className="material-symbols-outlined">
                                 stat_minus_1
                             </span>
@@ -31,7 +51,7 @@ const Navbar = () => {
                             </span>
                         </li>
                         <li>
-                            Contact
+                            <Link to="#footer" onClick={handleContactClick}>Contact</Link>
                         </li>
                     </ul>
                 </div>
@@ -43,7 +63,7 @@ const Navbar = () => {
                 </div>
             </nav>
             <nav className='phone-navbar'>
-                <div className="phone-nav-top">
+                <div className="phone-navbar-top">
                     <div className="logo">
                         <h2>3EIGHT</h2><span className="material-symbols-outlined">
                             restaurant_menu
@@ -56,10 +76,27 @@ const Navbar = () => {
                         <button>Login</button>
                     </div>
                 </div>
-                <div className="phone-nav-bottom">
-                    <ul className='phone-menu-item'>
-                        <li className='phone-menu-item-li'><h2>home</h2></li>
-                    </ul>
+                <div className={`phone-navbar-bottom ${isVisible ? 'visible' : 'hidden'}`}>
+                    <section>
+                        <span className="material-symbols-outlined">
+                            home
+                        </span> <small>Home</small>
+                    </section>
+                    <section>
+                        <span class="material-symbols-outlined">
+                            support_agent
+                        </span><small>Service</small>
+                    </section>
+                    <section>
+                        <span class="material-symbols-outlined">
+                            restaurant_menu
+                        </span> <small>Menu</small>
+                    </section>
+                    <section onClick={handleContactClick}>
+                        <span class="material-symbols-outlined">
+                            call
+                        </span> <small>Contact</small>
+                    </section>
                 </div>
             </nav>
         </>

@@ -1,9 +1,9 @@
-:root{
-    --bg-color : #111111;
-    --logo-color : #f2993b;
+:root {
+    --bg-color: #111111;
+    --logo-color: #f2993b;
 }
 
-.laptop-navbar{
+.laptop-navbar {
     background-color: var(--bg-color);
     color: grey;
     display: flex;
@@ -11,38 +11,42 @@
     align-items: center;
     padding: 20px;
     padding-top: 25px;
+    position: sticky;
+    top: 0;
+    width: 100vw;
+    z-index: 30;
 }
 
-.logo{
+.logo {
     display: flex;
     align-items: center;
     color: var(--logo-color);
     border-bottom: 3px solid var(--logo-color);
 }
 
-ul{
+ul {
     display: flex;
     align-items: center;
     gap: 19px;
 }
 
-.last-part-nav{
+.last-part-nav {
     display: flex;
     align-items: center;
     gap: 25px;
 }
 
-.last-part-nav button{
+.last-part-nav button {
     border: 3px solid grey;
     padding: 3px 18px;
     border-radius: 30px;
 }
- 
-li{
+
+li {
     cursor: pointer;
 }
 
-.icon-nav{
+.icon-nav {
     display: flex;
     align-items: center;
     gap: -2px;
@@ -50,24 +54,67 @@ li{
 
 /* phone-navbar */
 
-.phone-navbar{
+.phone-navbar {
     display: none;
 }
-@media only screen and (max-width:710px){
-    .laptop-navbar{
+
+@media only screen and (max-width:710px) {
+    .laptop-navbar {
         display: none;
     }
 
-    .phone-navbar{
-        display: flex;
-        background-color: var(--bg-color);
+    .phone-navbar {
+        display: block;
         color: grey;
         padding: 14px 10px;
     }
 }
 
-.phone-nav-top{
+
+.phone-navbar-top {
+    position: fixed;
+    background-color: var(--bg-color);
+    height: auto;
+    width: 100%;
+    top: 0;
+    display: flex;
+    left: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    z-index: 39;
+}
+
+.phone-navbar-bottom {
+    position: fixed;
+    bottom: 10px;
+    padding: 9px;
+    width: 80vw;
+    border-radius: 30px;
+    height: max-content;
+    left: 10%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    background-color: var(--bg-color);
+    transform: translateY(100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 2;
+}
+
+.phone-navbar-bottom.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.phone-navbar-bottom.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.phone-navbar-bottom section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
 }

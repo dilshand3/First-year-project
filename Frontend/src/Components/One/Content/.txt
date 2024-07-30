@@ -1,0 +1,119 @@
+ <div className="left flex flex-col gap-2 items-start pt-20 pl-20 text-center">
+          <div className="top flex flex-col items-center text-center">
+            <p>Savor Signature Dishes Every</p>
+            <p>Time, With Lighting-<star>Fast Delivery</star></p>
+            <p className='flex gap-1'> <p>To Your Doorstep!</p> <img src={pizzImage} alt="" className='w-8' /></p>
+          </div>
+          <div className="bottom flex flex-col gap-4 items-center px-20">
+            <div className="bottom-top flex items-center gap-5 mx-auto">
+              <button id='frstBtn' className='rounded-xl flex items-center'><p>Rate-US</p> <span class="material-symbols-outlined">
+                grade
+              </span></button>
+              <button className='flex items-center gap-2' id='scndBtn'><img src={orderitem} className='w-7' alt="" /><p>How to order</p></button>
+            </div>
+            <div className="bottom-bottom">
+              <div className="bottom-bottom-card flex flex-col items-center">
+                <img src={medal} alt="medal" className='w-8' />
+                <span className='flex flex-col items-center '>
+                  <b>350k+ review</b>
+                  <small>(4.0)</small>
+                </span>
+              </div>
+              <div className="bottom-bottom-card flex flex-col items-center">
+                <img src={house} alt="house" className='w-8' />
+                <span className='flex flex-col items-center '>
+                  <b>3000+</b>
+                  <small>restraurent</small>
+                </span>
+              </div>
+              <div className="bottom-bottom-card flex flex-col items-center">
+                <img src={cooking} alt="restraurent" className='w-8' />
+                <span className='flex flex-col items-center '>
+                  <b>4000+ food</b>
+                  <small>item</small>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="right">
+          <img src={graphImage} alt="Graph" id='right-bg'/>
+          <img src={frontImage} alt="front"  id='right-person'/>
+
+        </div>
+
+
+        @media only screen and (max-width:710px){
+    main{
+        flex-direction: column-reverse;
+    }
+}
+
+.left{
+   color: white;
+   height: 100%;
+   width: 50%;
+}
+
+.left .top{
+    font-size: 2em;
+}
+
+star{
+    color: var(--logo-color);
+    border-bottom: 2px solid var(--logo-color);
+}
+
+.left #frstBtn{
+    background-color: var(--logo-color);
+    padding: 12px 17px;
+}
+
+#frstBtn:hover{
+    --logo-color :#da8122;
+    background-color: var(--logo-color);
+    color: whitesmoke;
+}
+.left #scndBtn{
+    border: 2px solid var(--logo-color);
+    padding: 8px;
+    border-radius: 30px;
+    color: var(--logo-color);
+}
+
+
+.left #scndBtn:hover{
+    color: white;
+    background-color: var(--logo-color);
+}
+
+.bottom .bottom-bottom{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.right{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 30%;
+    justify-content: center;
+}
+
+
+.right #right-person{
+    position: relative;
+    width: 200px;
+    height: auto;
+    z-index: 2;
+}
+
+
+.right #right-bg{
+    position: relative;
+    width: 500px;
+    z-index: 1;
+    left: 300px;
+}
+
